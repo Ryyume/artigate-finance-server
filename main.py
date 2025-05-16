@@ -71,3 +71,12 @@ def stats(request: Request, db: Session = Depends(get_db)):
         "sales": sales,
         "expenses": expenses
     })
+
+@app.post("/categories/", response_model=schemas.Category)
+def add_category(cat: schemas.CategoryCreate, db: Session = Depends(get_db)):
+    return crud.create_category(db, cat)
+
+@app.get("/categories/", response_model=List[schemas.Category])
+def get_categories(db: Session = Depends(get_db)):
+    return crud.get_categories(db)
+
