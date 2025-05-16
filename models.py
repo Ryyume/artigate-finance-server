@@ -37,3 +37,8 @@ class Expense(Base):
     amount = Column(Float)
     sale_id = Column(Integer, ForeignKey("sales.id"))
     sale = relationship("Sale", back_populates="expenses")
+
+class Category(Base):
+    __tablename__ = "categories"
+    id = Column(Integer, primary_key=True, index=True)
+    name = Column(String, unique=True, index=True)
