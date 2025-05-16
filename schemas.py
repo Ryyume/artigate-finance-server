@@ -1,8 +1,6 @@
 from pydantic import BaseModel
 from datetime import datetime
 
-# ======= Подразделения =======
-
 class SubdivisionBase(BaseModel):
     name: str
 
@@ -13,9 +11,6 @@ class Subdivision(SubdivisionBase):
     id: int
     class Config:
         from_attributes = True
-
-
-# ======= Фонды =======
 
 class FundBase(BaseModel):
     name: str
@@ -31,9 +26,6 @@ class Fund(FundBase):
     class Config:
         from_attributes = True
 
-
-# ======= Продажи =======
-
 class SaleBase(BaseModel):
     name: str
     category: str
@@ -48,9 +40,6 @@ class Sale(SaleBase):
     created_at: datetime
     class Config:
         from_attributes = True
-
-
-# ======= Расходы =======
 
 class ExpenseBase(BaseModel):
     title: str

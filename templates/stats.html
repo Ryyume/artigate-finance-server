@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Статистика</title>
+</head>
+<body>
+    <h1>Статистика</h1>
+    <p><strong>Сумма продаж:</strong> {{ total_sales }} ₸</p>
+    <p><strong>Сумма расходов:</strong> {{ total_expenses }} ₸</p>
+    <p><strong>Прибыль:</strong> {{ profit }} ₸</p>
+
+    <h2>Подразделения</h2>
+    <ul>
+        {% for sub in subdivisions %}
+            <li>{{ sub.name }}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Фонды</h2>
+    <ul>
+        {% for f in funds %}
+            <li>{{ f.name }} ({{ f.percent }}%) — {{ f.balance }} ₸</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Продажи</h2>
+    <ul>
+        {% for s in sales %}
+            <li>{{ s.name }} — {{ s.amount }} ₸</li>
+        {% endfor %}
+    </ul>
+
+    <h2>Расходы</h2>
+    <ul>
+        {% for e in expenses %}
+            <li>{{ e.title }} — {{ e.amount }} ₸</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

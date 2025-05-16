@@ -7,7 +7,6 @@ class Subdivision(Base):
     __tablename__ = "subdivisions"
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
-
     funds = relationship("Fund", back_populates="subdivision")
     sales = relationship("Sale", back_populates="subdivision")
 
@@ -17,7 +16,6 @@ class Fund(Base):
     name = Column(String, index=True)
     percent = Column(Float, default=0.0)
     balance = Column(Float, default=0.0)
-
     subdivision_id = Column(Integer, ForeignKey("subdivisions.id"))
     subdivision = relationship("Subdivision", back_populates="funds")
 
@@ -28,7 +26,6 @@ class Sale(Base):
     category = Column(String, index=True)
     amount = Column(Float)
     created_at = Column(DateTime, default=datetime.utcnow)
-
     subdivision_id = Column(Integer, ForeignKey("subdivisions.id"))
     subdivision = relationship("Subdivision", back_populates="sales")
     expenses = relationship("Expense", back_populates="sale")
@@ -38,6 +35,5 @@ class Expense(Base):
     id = Column(Integer, primary_key=True, index=True)
     title = Column(String, index=True)
     amount = Column(Float)
-
     sale_id = Column(Integer, ForeignKey("sales.id"))
     sale = relationship("Sale", back_populates="expenses")
