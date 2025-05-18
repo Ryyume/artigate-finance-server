@@ -46,3 +46,13 @@ class Category(CategoryBase):
 
     class Config:
         from_attributes = True
+        
+def create_category(db: Session, cat: schemas.CategoryCreate):
+    db_cat = models.Category(name=cat.name)
+    db.add(db_cat)
+    db.commit()
+    db.refresh(db_cat)
+    return db_cat
+
+def get_categories(db: Session):
+    return db.query(models.Category).all()
